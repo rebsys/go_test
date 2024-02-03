@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  httpd:
+    container_name: go_test-httpd
+    build:
+      context: .
+      dockerfile: images/go-app/Dockerfile
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    networks:
+      - go_test-net
+
+  db:
+    container_name: go_test-db
+    image: postgres:14
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - TZ=Europe/Moscow
+    networks:
+      - go_test-net
+networks:
+  go_test-net:
+    driver: bridge

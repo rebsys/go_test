@@ -1,0 +1,11 @@
+GET http://localhost:8080/update
+
+###
+GET http://localhost:8080/state
+
+###
+GET http://localhost:8080/get_names?name=abu aba
+###
+GET http://localhost:8080/get_names?type=strong&name=Ahmed KABADHE
+###
+GET http://localhost:8080/get_names?type=strong&name=ahmed
